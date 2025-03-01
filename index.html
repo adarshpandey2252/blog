@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloggerism</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Bloggerism</div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="fetchNews()">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Explore Your Favourite Personality Biography</h1>
+        <p>Discover the Inspiring Stories of Famous Personalities</p>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search here..." />
+            <button onclick="searchFunction()">Search</button>
+        </div>
+
+        <!-- Category Buttons -->
+        <div class="categories">
+            <button onclick="fetchNewsByCategory('influencer')">Influencer</button>
+            <button onclick="fetchNewsByCategory('cricketer')">Cricketer</button>
+            <button onclick="fetchNewsByCategory('youtuber')">Youtuber</button>
+            <button onclick="fetchNewsByCategory('model')">Model</button>
+            <button onclick="fetchNewsByCategory('actor')">Actor</button>
+            <button onclick="fetchNewsByCategory('actress')">Actress</button>
+            <button onclick="fetchNewsByCategory('singer')">Singer</button>
+            <button onclick="fetchNewsByCategory('politician')">Politician</button>
+        </div>
+
+        <!-- News Container (4-Column Layout) -->
+        <div class="container" id="news-container">
+            
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        async function fetchNews(query = '') {
+            const apiKey = '031ae912836a4b16be67f622e65f1e9c';
+            let url = `https://newsapi.org/v2/everything?q=${query || 'tesla'}&apiKey=${apiKey}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const newsContainer = document.getElementById('news-container');
+                newsContainer.innerHTML = '';
+
+                data.articles.slice(0, 12).forEach(article => {
+                    const newsItem = document.createElement('div');
+                    newsItem.classList.add('card');
+                    newsItem.innerHTML = `
+                    <div  ${article.url} class ="box"> 
+                        <img src="${article.urlToImage || 'https://via.placeholder.com/300'}" alt="News Image">
+                        <div class="content">
+                            <h3>${article.title}</h3>
+                            <p>${new Date(article.publishedAt).toDateString()}</p>
+                            <a href="${article.url}" target="_blank">Read more</a>
+                        </div>
+                        <div/>
+                    `;
+                   
+                    newsContainer.appendChild(newsItem);
+                });
+            } catch (error) {
+                console.error('Error fetching news:', error);
+            }
+        }
+
+        function searchFunction() {
+            const searchQuery = document.getElementById('search-input').value;
+            fetchNews(searchQuery);
+        }
+
+        function fetchNewsByCategory(category) {
+            fetchNews(category);
+        }
+
+        // Load default news on page load
+        fetchNews();
+    </script>
+
+</body>
+</html>

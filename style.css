@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f6f6f6;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.search-container {
+    margin: 20px 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 300px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #e64a19;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.profile-section {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 80px auto;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+.news .card{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tag {
+    display: inline-block;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin: 10px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.content {
+    padding: 15px;
+}
+
+h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+.container a{
+    color: black;
+    margin-top: 20px;
+    background-color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+
+}
+.container a:hover{
+    color: white;
+    background-color: #333;
+}
+.box{
+    cursor: pointer;
+}
